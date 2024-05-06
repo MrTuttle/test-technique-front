@@ -1,5 +1,6 @@
 import useSite from '../Utils/useSite'
 import { CardMini } from './CardMini'
+import { ShowDate } from './ShowDate'
 import { Badge } from './ui/badge'
 
 export const SiteListing = () => {
@@ -8,8 +9,12 @@ export const SiteListing = () => {
   return (
     <>
       <div className="flex flex-col gap-4 sm:flex-row items-center justify-between py-8">
-        <h5 className="text-lg font-semibold leading-none text-slate-700 dark:text-slate-500">
+        <h5 className="text-lg font-semibold leading-none text-slate-600 dark:text-slate-500">
           Taux de production par sites
+          <br />{' '}
+          <span className=" font-normal text-sm text-slate-400 dark:text-slate-500">
+            <ShowDate />
+          </span>
         </h5>
         <ul className="inline-flex justify-center sm:justify-start flex-wrap gap-2">
           <li>

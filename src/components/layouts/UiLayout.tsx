@@ -35,6 +35,7 @@ const UiLayout = () => {
               <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
             </PopoverContent>
           </Popover>
+
           <ModeToggle />
         </div>
         <div className=" px-2 sm:px-8 sm:py-8">
