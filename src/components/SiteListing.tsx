@@ -6,6 +6,25 @@ import { Badge } from './ui/badge'
 export const SiteListing = () => {
   const sites = useSite()
 
+  const statusListDisplay = () => {
+    type status = { text: string; value: number }
+
+    const statusList: status[] = [
+      { text: 'ok', value: 120 },
+      { text: 'Dégradé', value: 74 },
+      { text: 'A l’arrêt', value: 10 },
+      { text: 'pas de données', value: 8 },
+    ]
+    return statusList.map((e, index) => (
+      <li key={index}>
+        <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
+          {e.value}
+          <span className=" opacity-60 pl-2">{e.text}</span>
+        </Badge>
+      </li>
+    ))
+  }
+
   return (
     <>
       <div className="flex flex-col gap-4 sm:flex-row items-center justify-between py-8">
@@ -17,26 +36,7 @@ export const SiteListing = () => {
           </span>
         </h5>
         <ul className="inline-flex justify-center sm:justify-start flex-wrap gap-2">
-          <li>
-            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
-              194<span className=" opacity-60 pl-2">OK</span>
-            </Badge>
-          </li>
-          <li>
-            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
-              75 <span className=" opacity-60 pl-2"> dégradés</span>
-            </Badge>
-          </li>
-          <li>
-            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
-              12 <span className=" opacity-60 pl-2">A l'arrêt</span>
-            </Badge>
-          </li>
-          <li>
-            <Badge className="dark:bg-slate-800 bg-slate-500 dark:text-white">
-              12 <span className=" opacity-60 pl-2">Pas de données</span>
-            </Badge>
-          </li>
+          {statusListDisplay()}
         </ul>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2">
